@@ -80,9 +80,11 @@ body {
 
     border-radius: 12px;
     box-shadow: 0 0 0 1px #e3e3e3;
-    line-height: 10px;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
 .frame-scale {
     transform: scale(1.1);
 }

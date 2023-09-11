@@ -6,12 +6,14 @@ frameContents.forEach((frame) => {
     frame.addEventListener('dragenter', dragEnter);
     frame.addEventListener('dragover', dragOver);
     frame.addEventListener('dragleave', dragLeave);
-    frame.addEventListener('drop', drop);
+    frame.addEventListener('drop', drop, {capture: true});
 });
 
 draggableFrameItems.forEach((item) => {
-    item.addEventListener('dragstart', dragStart);
-    item.addEventListener('dragend', dragEnd);
+    item.addEventListener('dragstart', dragStart, /*{capture: true}*/);
+    item.addEventListener('dragend', dragEnd, /*{capture: true}*/);
+    item.addEventListener('dragon', dragOn);
+    item.stopPropogation();
 });
 
 function dragEnter(e) {
@@ -44,4 +46,8 @@ function dragStart(e) {
 function dragEnd(e) {
     e.target.classList.remove('frame-item-rotate');
     console.log('drag end');
+}
+
+function dragOn(e) {
+    e.target.classList.add('frame-item-rotate');
 }
